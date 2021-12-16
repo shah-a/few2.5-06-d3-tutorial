@@ -6,8 +6,8 @@ d3.csv('../data/cities.csv').then(data => {
     .data(data)
     .enter()
     .append('circle')
-    .attr('cx', d => parseFloat(d.x) * 2 + 250)
-    .attr('cy', d => parseFloat(d.y) * 2 + 250)
+    .attr('cx', d => parseFloat(d.x) * 1.75 + 250)
+    .attr('cy', d => parseFloat(d.y) * -1.75 + 250)
     .attr('r', d => parseInt(d.population) * 0.00001)
     .attr('opacity', 0.25)
     .attr('fill', d => {
