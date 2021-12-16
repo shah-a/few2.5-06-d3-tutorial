@@ -1,19 +1,30 @@
 d3.csv('../data/cities.csv').then(data => {
+  const minX = d3.min(data, d => parseFloat(d.x))
+  const maxX = d3.max(data, d => parseFloat(d.x))
+
+  const minY = d3.min(data, d => parseFloat(d.y))
+  const maxY = d3.max(data, d => parseFloat(d.y))
+
+  const minPop = d3.min(data, d => parseInt(d.population))
+  const maxPop = d3.max(data, d => parseInt(d.population))
+
+  const countries = [...new Set(data.map(d => d.country))] // filter for unique values
+  const colours = ['cornflowerblue', 'gold', 'green', 'tomato']
+
   const xScale = d3.scaleLinear()
-    .domain([-180, 180])
-    .range([0, 700])
+    .domain([minX, maxX])
+    .range([100, 600])
 
   const yScale = d3.scaleLinear()
-    .domain([-90, 90])
-    .range([0, 500])
+    .domain([minY, maxY])
+    .range([400, 100])
 
   const countryScale = d3.scaleOrdinal()
-    // .domain(data.map(d => d.country))
-    .domain([...new Set(data.map(d => d.country))]) // unique values
-    .range(['cornflowerblue', 'gold', 'green', 'tomato'])
+    .domain(countries)
+    .range(colours)
 
   const popScale = d3.scaleSqrt()
-    .domain([500_000, 15_000_000])
+    .domain([minPop, maxPop])
     .range([10, 100])
 
   d3.select('#svg')
