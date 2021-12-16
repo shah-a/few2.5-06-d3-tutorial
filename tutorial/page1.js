@@ -1,4 +1,3 @@
-// TUTORIAL PAGE 1:
 d3.select('body')
   .selectAll('div')
   .data([5, 6, 2, 8, 4, 9, 1, 4, 9, 1])
