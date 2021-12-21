@@ -26,7 +26,7 @@ const handleData = (data) => {
     .tickSize(-width + margin.left + margin.right)
     // .tickValues([1000000, 5000000, 10000000, 15000000])
 
-  const svg = d3.select('svg')
+  const svg = d3.select('#svg')
   const barGroup = svg.append('g')
 
   barGroup.selectAll('rect')
