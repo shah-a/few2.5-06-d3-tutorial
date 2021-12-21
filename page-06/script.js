@@ -30,10 +30,6 @@ d3.csv('../data/cities.csv').then(data => {
     .domain(popExtent)
     .range([10, 100])
 
-  const legendScale = d3.scaleOrdinal()
-    .domain(data.map(d => d.label))
-    .range([300, 500])
-
   const node = d3.select('#svg')
     .style('border', '1px solid')
     .selectAll('g')
